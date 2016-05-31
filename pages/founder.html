@@ -1,0 +1,189 @@
+
+<div id="top">
+  
+    <img src="images/GolemBanner.jpg" id="fireWarror" class="img-responsive">
+</div>
+
+<div layout="column" layout-align="end end">
+	<div flex></div>
+    <div>
+        <md-card class="storeCards">
+            
+            <md-card-content>
+               <md-button class="md-button" ng-click="ToggleCart()" ng-disabled="true">
+                    <i class="fa fa-shopping-basket fa-2x"></i>
+                    {{itemCounter}} items
+               </md-button>
+               <md-button class="md-button " ng-click="CheckOut()" ng-disabled="true">
+                    <i class="fa fa-shopping-bag fa-2x"></i>
+                    Check Out
+               </md-button> 
+            </md-card-content>
+        </md-card>
+     </div>
+</div>
+
+<div layout="row" layout-xs="column"  layout-wrap >
+	<div flex="33" flex-xs="100" ng-repeat="teir in tiers">
+    	<md-card class="storeCards">
+        	<md-card-content>
+            	<div layout="column" layout-align="center center">
+                    <p>${{teir.price}} USD for</p>
+                    <img ng-src="{{teir.teirImage}}" alt="{{teir.teirName}} badge" class="badgeIcon" />
+                    <h3 class="md-display-1">{{teir.levelName}}</h3>
+                    <p class="md-subhead">{{teir.teirGiftsIntro}}</p>
+                    <div layout="row" layout-align="center center">
+                        <md-button aria-label="More Detail" ng-click="ToggleDetail($index)">
+                            More Detail
+                        </md-button>
+                        <md-button class="md-button" ng-disabled="true" aria-label="Add to Shopping Cart" ng-click="AddToCart(teir.levelName,teir.price, teir.teirName )">
+                            Add To Cart
+                        </md-button>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+</div>
+<!-- Toggle Details for each of the Founders Levels -->
+<script type="text/ng-template" id="teirModal.html">
+  <div class="modal-body" id="teirModal">
+	  <div layout="row" layout-xs="column" id="teirBody" >
+	  		<div layout="column" layout-align="start center" flex="50">
+				<p>${{selectedTeir.price}} USD</p>
+				<img ng-src="{{selectedTeir.teirImage}}" class="LargeBadgeIcon"  />
+				<h3>{{selectedTeir.levelName}}</h3>
+				<p ng-show="{{selectedTeir.specialOffer}}">
+					This will be a special section of the forums locked to all players other than those on the design council. This section of the forums will allow council members to, among other things, allocate votes to various design decisions during the continued development of Visions of Zosimos, thereby taking an active role in the development of the game and shaping the future VoZ. This will put our Design Council at the forefront of our open door development giving them the most power to shape our development process. Note: Access to the design council and all of its benefits will not be offered post release of the game.
+				</p>
+			</div>
+			
+			<div layout="column" layout-align="center start" flex="50">
+				<div class="well well-lg">
+					<md-list class="md-dense" >
+						
+						<md-list-item class="md-2-line" ng-repeat="teir in selectedTeir.teirGifts track by $index">
+						  <img src="images/listIcon.png" class="md-avatar md-18" alt="icon" />
+						  <div class="md-list-item-text">
+								{{teir}}
+							
+						  </div>
+						</md-list-item>
+						
+					</md-list>
+				</div>
+			</div>
+	  </div>
+  </div>
+  <div id="teirFooter" class="modal-footer">
+  	 <md-button ng-click="AddToCart(selectedTeir.levelName,selectedTeir.price, selectedTeir.teirName )" ng-disabled="true" class="md-button md-raised md-primary">
+	 		Add To Cart
+	 </md-button>
+	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
+	 		Close
+	 </md-button>
+  </div>
+</script>
+<!-- end of Toogle Detials --->
+
+<!-- Toggle Store Cart --->
+<script type="text/ng-template" id="cartModal.html">
+  <div class="modal-body" id="cartModal">
+	  <md-list>
+	  		<md-list-item ng-repeat="item in itemLists">
+				<md-input-container>
+					<label>Number of Copys</label>
+					<input type="number" min="1" ng-model="item.copy">
+				</md-input-container>
+				<img src="images/store/founderBadge/{{item.img}}.png" class="badgeIcon">
+				<h4>{{item.name}}</h4>
+				<div flex="auto"></div>
+				<!--(${{item.price}}.00 Per {{item.copy}} Copys)-->
+				<div flex="auto"></div>
+				<h4>${{item.copy * item.price}}.00</h4>
+				<md-button class="md-icon-button" ng-click="DeleteItem($index)">
+					<i class="fa fa-2x fa-times redText"></i>
+				</md-button>
+			</md-list-item>
+			
+	  </md-list>
+  </div>
+  <div id="cartFooter" class="modal-footer">
+  	 <h4>{{numItem}} Items</h4>
+  	 <h4>${{total}}.00 total</h4>
+  	 <md-button ng-click="CheckOut()" ng-disabled="true" class="md-button md-raised md-primary">
+	 		Check Out
+	 </md-button>
+	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
+	 		Close
+	 </md-button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="paymentOptionModal.html">
+  <div class="modal-body" id="paymentOption">
+	  <a href="#/founder" ng-click="CheckOutWith('paypal');"><div class="panel panel-voz-default ">
+	  	  <div class="panel-heading">
+		  	PayPal
+		  </div>
+	  </div></a>
+	  <a href="#/founder" ng-click="CheckOutWith('paypal');" ><div class="panel panel-voz-default ">
+	  	  <div class="panel-heading disabled">
+		  	Credit Card
+		  </div>
+	  </div></a>
+  </div>
+  <div id="paymentOptionFooter" class="modal-footer">
+	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
+	 		Cancel
+	 </md-button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="ceditCard.html">
+  <form>
+  <div class="modal-body" id="ceditCard">
+	  <div layout-gt-xs="row">
+	  		<md-input-container class="md-block" flex-gt-sm>
+				<label>First name*</label>
+				<input ng-model="payer.first" required>
+          	</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Last name*</label>
+				<input ng-model="payer.last" required>
+          	</md-input-container>
+			
+	  </div>
+	  <md-input-container class="md-block">
+			  <label>Email Address*</label>
+			  <input ng-model="user.email" required>
+	  </md-input-container>
+	  <md-input-container class="md-block">
+			  <label>Address*</label>
+			  <input ng-model="user.address.line1" required>
+	  </md-input-container>
+	  <div layout-gt-xs="row">
+	  		<md-input-container class="md-block" flex-gt-sm>
+				<label>City*</label>
+				<input ng-model="payer.address.city" required>
+          	</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>State</label>
+				<input ng-model="payer.address.state">
+          	</md-input-container>
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Postal Code*</label>
+				<input ng-model="payer.address.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+          	</md-input-container>
+	  </div>
+  </div>
+  <div id="ceditCardFooter" class="modal-footer">
+	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
+	 		Cancel
+	 </md-button>
+	 <md-button ng-click="CheckOutWith('card')" class="md-button md-raised md-primary">
+	 		Continue
+	 </md-button>
+  </div>
+  </form>
+</script>
