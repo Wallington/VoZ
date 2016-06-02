@@ -60,6 +60,11 @@ body
 	margin: 5px;		
 }
 
+a:link, a:visited
+{
+	color: #FFBF00 ;	
+}
+
 footer
 {
 	margin-top: 5px;

@@ -289,6 +289,31 @@ vozApp.service('Nav', function()
 				}
 				
 			]
+		},
+		{
+			"name"   	: "founder",
+			"url"   	: "#/founder",
+			"disable" : false,
+			"subMenu"	:
+			[
+				{
+					"name" : "Store: Main",
+					"achLink" : 'store:main'
+				},
+				{
+					"name" : "Store: Upgrade",
+					"achLink" : "store:upgrade"
+				},
+				{
+					"name" : "FAQ",
+					"achLink" : "store:faq"
+				},
+				{
+					"name" : "Founders Package Reward Details",
+					"achLink" : "store:rewarddetails"
+				}
+				
+			]
 		}
 	]; 
 	
@@ -322,7 +347,7 @@ vozApp.service('Nav', function()
 				this.subMenuList = this.menuList[5].subMenu;
 				
 				break;
-			case 'support':
+			case 'founder':
 				this.subMenuList = this.menuList[6].subMenu;
 				
 				break;
