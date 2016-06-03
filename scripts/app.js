@@ -133,7 +133,7 @@ vozApp.service('Nav', function()
 		{
 			"name" : "New",
 			"url"  : "#/new",
-			"disable" : true,
+			"disable" : false,
 			"subMenu" : 
 			[
 				{
@@ -297,11 +297,11 @@ vozApp.service('Nav', function()
 			"subMenu"	:
 			[
 				{
-					"name" : "Store: Main",
+					"name" : "Main",
 					"achLink" : 'store:main'
 				},
 				{
-					"name" : "Store: Upgrade",
+					"name" : "Upgrade",
 					"achLink" : "store:upgrade"
 				},
 				{
@@ -309,7 +309,7 @@ vozApp.service('Nav', function()
 					"achLink" : "store:faq"
 				},
 				{
-					"name" : "Founders Package Reward Details",
+					"name" : "Details",
 					"achLink" : "store:rewarddetails"
 				}
 				
