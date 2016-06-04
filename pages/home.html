@@ -2,7 +2,7 @@
 	<div ng-controller="homeCarousel">
     	<uib-carousel interval="5000" no-wrap="false">
         	<uib-slide ng-repeat="slide in slides track by $index" index="$index">
-            	<img ng-src="{{slide}}" class="img-responsive" style="margin: auto;" />
+            	<a ng-href="{{slide.outsideSrc}}"><img ng-src="{{slide.img}}" class="img-responsive" style="margin: auto;" /></a>
             </uib-slide>
         </uib-carousel>
     </div>

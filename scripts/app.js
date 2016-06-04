@@ -141,8 +141,8 @@ vozApp.service('Nav', function()
 					"achLink" : "cards"
 				},
 				{
-					"name" : "Realms",
-					"achLink" : "realms"
+					"name" : "Borads",
+					"achLink" : "borads"
 				}
 			]	
 		},
@@ -218,24 +218,12 @@ vozApp.service('Nav', function()
 			"subMenu" :
 			[
 				{
-					"name" : "Realms",
-					"achLink" : "realms"
+					"name" : "The Cathedral of Bones",
+					"achLink" : "cathedralofbones"
 				},
 				{
-					"name" : "PVP",
-					"achLink" : "pvp"
-				},
-				{
-					"name" : "PVE",
-					"achLink" : "pve"
-				},
-				{
-					"name" : "Conquest",
-					"achLink" : "conquest"
-				},
-				{
-					"name" : "Raids",
-					"achLink" : "raids"
+					"name" : "The Blighted Mire",
+					"achLink" : "blightedmire"
 				}
 			] 	
 		},
@@ -276,12 +264,8 @@ vozApp.service('Nav', function()
 					"achLink" : "video"
 				},
 				{
-					"name" : "Live!",
-					"achLink" : "live"
-				},
-				{
-					"name" : "Sketch Up",
-					"achLink" : "sketchup"
+					"name" : "Streams",
+					"achLink" : "streams"
 				},
 				{
 					"name" : "Wallpaper",
@@ -672,9 +656,16 @@ vozApp.controller('homeCarousel', function($scope) //this controlls the home sli
 {
 	$scope.slides =
 	[
-		'images/IndieGoGoBanner.png', //slide 1
-		'images/GenConBanner.png', //slide 2
-		'images/eldjotnar.jpg' //slide 3, end of slides
+		{
+			img : 'images/IndieGoGoBanner.png',
+			outsideSrc : "https://www.indiegogo.com/projects/visions-of-zosimos"
+		}, //slide 1
+		{
+			img : 'images/GenConBanner.png'
+		}, //slide 2
+		{
+			img : 'images/eldjotnar.jpg'
+		}//slide 3, end of slides
 	]
 	
 });
