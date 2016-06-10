@@ -15,7 +15,15 @@
 		<a href="#/media#wallpaper" target="_blank"><img src="images/wallpaperbutton.png"></a>
 	</div>
 	<div>
-		<iframe width="699" height="393" src="https://www.youtube.com/embed/X7g1DvtfX4s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+		<div hide-lg hide-xl hide-md hide-sm>
+            <iframe width="300" height="169" src="https://www.youtube.com/embed/X7g1DvtfX4s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div hide-lg hide-xl hide-xs>
+            <iframe width="500" height="281" src="https://www.youtube.com/embed/X7g1DvtfX4s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div hide-md hide-sm hide-xs>
+        	<iframe width="580" height="326" src="https://www.youtube.com/embed/X7g1DvtfX4s?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+        </div>
 	</div>
 	<div class="textBackground" id="survey">
     	<div ng-class="server.colorCode">{{server.message}}</div>

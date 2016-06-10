@@ -569,6 +569,16 @@ vozApp.controller('mainController',function($scope, $mdSidenav, $window, Nav, $l
 		$anchorScroll();
 	}
 	
+	$scope.CloseLeftMenuAfterClick = function()
+	{
+		$mdSidenav('left').toggle('close');	
+	}
+	
+	$scope.CloseMenu = function(leftOrRight)
+	{
+		$mdSidenav(leftOrRight).toggle('close');	
+	}
+	
 });
 
 /////////////////////////////////////////////
@@ -648,8 +658,7 @@ vozApp.controller('homeController', function($scope, $http, Nav)
 		}
 		
 	}
-	
-	
+		
 });
 
 vozApp.controller('homeCarousel', function($scope) //this controlls the home slider
@@ -657,14 +666,15 @@ vozApp.controller('homeCarousel', function($scope) //this controlls the home sli
 	$scope.slides =
 	[
 		{
-			img : 'images/IndieGoGoBanner.png',
+			img : 'images/IndieGoGoBanner.jpg',
 			outsideSrc : "https://www.indiegogo.com/projects/visions-of-zosimos"
 		}, //slide 1
 		{
-			img : 'images/GenConBanner.png'
+			img : 'images/GenConBanner.jpg'
 		}, //slide 2
 		{
-			img : 'images/eldjotnar.jpg'
+			img : 'images/greenLightbanner.jpg',
+			outsideSrc : "http://steamcommunity.com/sharedfiles/filedetails/?id=509966714"
 		}//slide 3, end of slides
 	]
 	
@@ -814,6 +824,7 @@ vozApp.controller('loreController', function($scope, $mdMedia, $document, $inter
 
 vozApp.controller('downloadController', function($scope, $http,$location)
 {
+	$scope.showMessage = false;
 	$scope.request =
 	{
 		name : '',
@@ -821,7 +832,7 @@ vozApp.controller('downloadController', function($scope, $http,$location)
 	};
 	
 	$scope.serverFeedback = "alert"; //were define default css so when $http done it will either add alert-success or alert-danger
-	$scope.message; // were get error message back from server was successful or fail send data
+	$scope.serverMessage;// were get error message back from server was successful or fail send data
 	
 	
 	$scope.Submit = function(htmlForm)
@@ -845,18 +856,16 @@ vozApp.controller('downloadController', function($scope, $http,$location)
 				}
 			).then(function successCallback(response)
 			{
-				$scope.serverMesage = response.data.message;
-				$scope.serverFeedback = response.data.serverState;
+				$scope.serverMessage = response.data[0].serverMessage;
+				$scope.serverFeedback = response.data[0].serverFeedback;
 			},
 			function errorCallback(response)
 			{
-				$scope.serverMesage = response.data.message;
-				$scope.serverFeedback = response.data.serverState;
+				$scope.serverMessage = response.data[0].serverMessage;
+				$scope.serverFeedback = response.data[0].serverFeedback;
 			});
 		}
 		$scope.showMessage = true;
-		
-		
 	}
 	
 });

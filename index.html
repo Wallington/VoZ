@@ -18,10 +18,17 @@
 <body ng-controller="mainController" >
 	<div  layout="column" layout-fill>
 		<div layout="row" layout-align="start center" id="header">
-            <img src="images/VoZ_Logo.png" class="img-responsive">
-            <md-button class="md-button md-raised vozPlay" ng-href="#/download">
-				PLAY FREE!
-			</md-button>
+            <a href="#/"><img src="images/VoZ_Logo.png" class="img-responsive"></a>
+            <div hide-sm hide-xs>
+                <md-button class="md-button md-raised vozPlay" ng-href="#/download">
+                    PLAY FREE!
+                </md-button>
+            </div>
+            <div show-sm show-xs hide-md hide-lg hide-xl>
+                <md-button class="md-button md-raised vozPlay-small" ng-href="#/download">
+                    PLAY FREE!
+                </md-button>
+            </div>
 			<div flex></div>
             
             <div id="nav">
@@ -90,16 +97,16 @@
 		  </footer>
     </div>
     <md-sidenav class="md-sidenav-left sidenav-left" md-component-id="left">
-        <div layout="column" layout-align="center center" >
+       <div layout="column" layout-align="center start">
+         	<md-button class="md-icon-button" ng-click="CloseMenu('left')"><i class="fa fa-times"></i></md-button>
+         </div>
+       <div layout="column" layout-align="center center" >
         	<img src="images/VoZ_Logo.png">
             <md-button class="md-button md-raised md-primary buttonWidth" ng-href="#/">
                 Home
             </md-button> 
-            <md-button ng-repeat="menu in menuList" class="md-button md-raised md-primary buttonWidth" ng-href="{{menu.url}}">
+            <md-button ng-repeat="menu in menuList" class="md-button md-raised md-primary buttonWidth" ng-href="{{menu.url}}" ng-click="CloseLeftMenuAfterClick()">
                   {{menu.name}}
-            </md-button>
-            <md-button class="md-button md-raised md-primary buttonWidth" ng-href="#/founder" >
-                Founders
             </md-button>
             <br />
             <div layout="row">
@@ -111,7 +118,11 @@
         </div>
     </md-sidenav>
     <md-sidenav class="md-sidenav-right sidenav-right" md-component-id="right">
-       	 <div layout="column" layout-align="center center" >
+       	 <div layout="column" layout-align="center end">
+         	<md-button class="md-icon-button" ng-click="CloseMenu('right')"><i class="fa fa-times"></i></md-button>
+         </div>
+         <div layout="column" layout-align="center center" >
+              
               <img src="images/VoZ_Logo.png">
               <md-button class="md-button" ng-repeat="social in socialList" ng-click="Tab(social.url)">
                     <i class="{{social.icon}} iconSize"></i>

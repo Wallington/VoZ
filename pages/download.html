@@ -14,7 +14,7 @@
             <div flex="50">
             	<h3 class="md-headline">Request Alpha Key</h3>
                 <form name="alphaKeyForm" novalidate ng-submit="Submit(alphaKeyForm)">
-                	<div ng-show="showMessage" ng-class="serverFeedback">{{serverMesage}}</div>
+                	<div ng-show="showMessage" ng-class="serverFeedback">{{serverMessage}}</div>
                     <md-input-container class="md-block" flex-gt-sm>
                     	<label>Your Full Name:</label>
                         <input ng-model="request.name"  ng-minlength="5" name="name"  required alt="full name input">
