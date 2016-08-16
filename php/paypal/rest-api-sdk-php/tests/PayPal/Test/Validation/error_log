@@ -1,0 +1,4 @@
+[10-Jun-2016 15:43:55 America/Denver] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/tests/PayPal/Test/Validation/JsonValidatorTest.php on line 7
+[10-Jun-2016 15:43:55 America/Denver] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/tests/PayPal/Test/Validation/NumericValidatorTest.php on line 7
+[10-Jun-2016 15:43:55 America/Denver] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/tests/PayPal/Test/Validation/ArgumentValidatorTest.php on line 7
+[10-Jun-2016 15:43:55 America/Denver] PHP Fatal error:  Class 'PHPUnit_Framework_TestCase' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/tests/PayPal/Test/Validation/UrlValidatorTest.php on line 7

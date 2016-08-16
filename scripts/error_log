@@ -1,0 +1,3 @@
+[04-Aug-2016 01:55:26 America/Denver] PHP Notice:  Undefined index: packName in /home4/foreveri/public_html/visionsofzosimos/sandbox/scripts/insertReserveItem.php on line 3
+[04-Aug-2016 01:55:26 America/Denver] PHP Notice:  Undefined index: emailTo in /home4/foreveri/public_html/visionsofzosimos/sandbox/scripts/insertReserveItem.php on line 4
+[04-Aug-2016 01:55:26 America/Denver] PHP Warning:  mail() expects at least 3 parameters, 2 given in /home4/foreveri/public_html/visionsofzosimos/sandbox/scripts/insertReserveItem.php on line 16

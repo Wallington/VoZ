@@ -1,0 +1,31 @@
+<div class="panel panel-voz-default">
+	<div class="panel-heading">
+    	<h3>Confirm Order</h3> 
+    </div>
+    <div class="panel-body" >
+    	<md-list-item ng-repeat="item in itemLists | orderBy: '+name'" layout="row" layout-xs="column" layout-sm="column">
+            <md-input-container>
+                <label>Number of Copys</label>
+                <input type="number" min="1" readonly ng-model="item.copy">
+            </md-input-container>
+            <img src="images/store/founderBadge/{{item.img}}.png" class="badgeIcon">
+            <h4>{{item.name}}</h4>
+            <div flex="auto"></div>
+            <md-input-container>
+            	<label>Email Key To</label>
+                <input type="email" ng-model="item.email" ng-change="OnChange()"/>
+            </md-input-container>
+            <div flex="auto"></div>
+            <h4>${{item.copy * item.price}}.00</h4>
+            
+        </md-list-item>
+    </div>
+    <div class="panel-heading">
+        	<md-button ng-click="ExecutePayment()" class="md-button md-raised md-primary">
+            	Process Order
+            </md-button>
+            <md-button ng-click="CancelPayment()" class="md-button md-raised md-primary">
+            	Cancel Order
+            </md-button>
+    </div>
+</div>

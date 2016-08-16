@@ -1,13 +1,12 @@
 [
-	
+
 	{
 		"levelName": "Thaumaturge Level",
-		"price"    : 40.00,
+		"price": 40.00,
 		"teirImage": "images/store/founderBadge/tin.png",
-		"teirName" : "tin",
-		"teirGiftsIntro" : "Four Digital Booster Packs, Three digital Start Packs, A unique Thaumaturge forum avatar, Unique In-game title: Thaumaturge, Unique \"Thaumaturge\" Shrine, Your name listed in the Founder section of the game credits, Digital Soundtrack and more",
-		"teirGifts":
-		[
+		"teirName": "tin",
+		"teirGiftsIntro": "Four Digital Booster Packs, Three digital Start Packs, A unique Thaumaturge forum avatar, Unique In-game title: Thaumaturge, Unique \"Thaumaturge\" Shrine, Your name listed in the Founder section of the game credits, Digital Soundtrack and more ",
+		"teirGifts": [
 			"Four Digital Booster Packs",
 			"Three digital Start Packs",
 			"A unique Thaumaturge forum avatar",
@@ -22,15 +21,13 @@
 			"Unique \"Thaumaturge\" Digital Homunculus Skin"
 		],
 		"specialOffer": false
-	},
-	{
+	}, {
 		"levelName": "Soothsayer level",
-		"price"    : 80.00,
+		"price": 80.00,
 		"teirImage": "images/store/founderBadge/copper.png",
-		"teirName" : "copper",
-		"teirGiftsIntro": "Thaumaturge level + A unique Soothsayer forum avatar Unique In-game title: Soothsayer, Unique “Soothsayer” Shrine, Your name listed in the Founder section of the game credits, Unique “Soothsayer” Digital Dice Skin, Unique “Soothsayer” Digital Card Sleeve and more",
-		"teirGifts":
-		[
+		"teirName": "copper",
+		"teirGiftsIntro": "Thaumaturge level + A unique Soothsayer forum avatar Unique In-game title: Soothsayer, Unique \"Soothsayer\" Shrine, Your name listed in the Founder section of the game credits, Unique \"Soothsayer\" Digital Dice Skin, Unique \"Soothsayer\" Digital Card Sleeve and more ",
+		"teirGifts": [
 			"Four Digital Booster Packs",
 			"A unique Thaumaturge forum avatar",
 			"Unique In-game title: Thaumaturge",
@@ -54,15 +51,13 @@
 			"Permanent 5% boost to in-game currency gain"
 		],
 		"specialOffer": false
-	},
-	{
+	}, {
 		"levelName": "The Prophet level",
-		"price"    : 175.00,
+		"price": 175.00,
 		"teirImage": "images/store/founderBadge/iron.png",
-		"teirName" : "iron",
-		"teirGiftsIntro": "Soothsayer level + A unique The Prophet forum avatar Unique In-game title: The Prophet, Unique “The Prophet Shrine”, Your name listed in the Design Council section of the game credits, Unique “The Prophet” Digital Dice Skin, Unique “The Prophet” Digital Card Sleeve and more",
-		"teirGifts":
-		[
+		"teirName": "iron",
+		"teirGiftsIntro": "Soothsayer level + A unique The Prophet forum avatar Unique In-game title: The Prophet, Unique \"The Prophet\" Shrine, Your name listed in the Design Council section of the game credits, Unique \"The Prophet\" Digital Dice Skin, Unique \"The Prophet\" Digital Card Sleeve and more",
+		"teirGifts": [
 			"Four Digital Booster Packs",
 			"A unique Thaumaturge forum avatar",
 			"Unique In-game title: Thaumaturge",
@@ -74,7 +69,7 @@
 			"Unique \"Thaumaturge\" Digital Dice Skin",
 			"Unique \"Thaumaturge\" Digital Card Sleeve",
 			"Unique \"Thaumaturge\" Digital Homunculus Skin",
-			
+
 			"Four digital Start Packs",
 			"A unique The Soothsayer forum avatar",
 			"Unique In-game title: The Soothsayer",
@@ -92,18 +87,16 @@
 			"Unique \"The Prophet\" Digital Card Sleeve",
 			"Unique \"The Prophet\" Digital Homunculus Skin",
 			"Permanent 10% boost to Homunculus xp gain"
-			
+
 		],
 		"specialOffer": true
-	},
-	{
+	}, {
 		"levelName": "The Abraxian Level",
-		"price"    : 225.00,
+		"price": 225.00,
 		"teirImage": "images/store/founderBadge/cobalt.png",
-		"teirName" : "cobalt",
-		"teirGiftsIntro": "The Prophet level + A unique The Abraxian forum avatar Unique In-game title: The Abraxian, Unique “The Abraxian Shrine”, Your name listed in the Design Council section of the game credits, Unique “The Prophet” Digital Dice Skin, Unique “The Abraxian” Digital Card Sleeve and more",
-		"teirGifts":
-		[
+		"teirName": "cobalt",
+		"teirGiftsIntro": "The Prophet level + A unique The Abraxian forum avatar Unique In-game title: The Abraxian, Unique \"The Abraxian\" Shrine, Your name listed in the Design Council section of the game credits, Unique \"The Prophet\" Digital Dice Skin, Unique \"The Abraxian\" Digital Card Sleeve and more",
+		"teirGifts": [
 			"Four Digital Booster Packs",
 			"A unique Thaumaturge forum avatar",
 			"Unique In-game title: Thaumaturge",
@@ -115,7 +108,7 @@
 			"Unique \"Thaumaturge\" Digital Dice Skin",
 			"Unique \"Thaumaturge\" Digital Card Sleeve",
 			"Unique \"Thaumaturge\" Digital Homunculus Skin",
-			
+
 			"Four digital Start Packs",
 			"A unique The Soothsayer forum avatar",
 			"Unique In-game title: The Soothsayer",
@@ -124,7 +117,7 @@
 			"Unique \"Soothsayer\" Digital Dice Skin",
 			"Unique \"Soothsayer\" Digital Card Sleeve",
 			"Unique \"Soothsayer\" Digital Homunculus Skin",
-			
+
 			"A unique The Prophet forum avatar",
 			"Unique In-game title: The Prophet",
 			"Unique \"Prophet\" Shrine",
@@ -132,7 +125,7 @@
 			"Unique \"The Prophet\" Digital Dice Skin",
 			"Unique \"The Prophet\" Digital Card Sleeve",
 			"Unique \"The Prophet\" Digital Homunculus Skin",
-			
+
 			"A unique The Abraxian forum avatar",
 			"Unique In-game title: The Abraxian",
 			"Apprentice level of the Design Council",
@@ -143,18 +136,16 @@
 			"Unique \"The Abraxian\" Digital Homunculus Skin",
 			"Permanent 15% boost to Homunculus xp gain",
 			"Permanent 15% boost to in-game currency gain"
-			
+
 		],
 		"specialOffer": true
-	},
-	{
+	}, {
 		"levelName": "Of Panopolis level",
-		"price"    : 275.00,
+		"price": 275.00,
 		"teirImage": "images/store/founderBadge/silver.png",
-		"teirName" : "silver",
-		"teirGiftsIntro": "The Abraxian level + A unique The Immortal forum avatar Unique In-game title: Of Panopolis, Unique “Of Panopolis Shrine”, Your name listed in the Design Council section of the game credits, Unique “Of Panopolis” Digital Dice Skin, Unique “Of Panopolis” Digital Card Sleeve and more",
-		"teirGifts":
-		[
+		"teirName": "silver",
+		"teirGiftsIntro": "The Abraxian level + A unique The Immortal forum avatar Unique In-game title: Of Panopolis, Unique \"Of Panopolis\" Shrine, Your name listed in the Design Council section of the game credits, Unique \"Of Panopolis\" Digital Dice Skin, Unique \"Of Panopolis\" Digital Card Sleeve and more",
+		"teirGifts": [
 			"A unique Thaumaturge forum avatar",
 			"Unique In-game title: Thaumaturge",
 			"Unique \"Thaumaturge\" Shrine",
@@ -166,7 +157,7 @@
 			"Unique \"Thaumaturge\" Digital Card Sleeve",
 			"Unique \"Thaumaturge\" Digital Homunculus Skin",
 			"Four digital Start Packs",
-			
+
 			"A unique The Soothsayer forum avatar",
 			"Unique In-game title: The Soothsayer",
 			"Unique \"Soothsayer\" Shrine",
@@ -174,7 +165,7 @@
 			"Unique \"Soothsayer\" Digital Dice Skin",
 			"Unique \"Soothsayer\" Digital Card Sleeve",
 			"Unique \"Soothsayer\" Digital Homunculus Skin",
-			
+
 			"A unique The Prophet forum avatar",
 			"Unique In-game title: The Prophet",
 			"Unique \"Prophet\" Shrine",
@@ -182,7 +173,7 @@
 			"Unique \"The Prophet\" Digital Dice Skin",
 			"Unique \"The Prophet\" Digital Card Sleeve",
 			"Unique \"The Prophet\" Digital Homunculus Skin",
-			
+
 			"A unique The Abraxian forum avatar",
 			"Unique In-game title: The Abraxian",
 			"Apprentice level of the Design Council",
@@ -191,7 +182,7 @@
 			"Unique \"The Abraxian\" Digital Dice Skin",
 			"Unique \"The Abraxian\" Digital Card Sleeve",
 			"Unique \"The Abraxian\" Digital Homunculus Skin",
-			
+
 			"Five Digital Booster Boxes",
 			"All Access Season 1 Pass",
 			"A unique The Of Panopolis forum avatar",
@@ -204,18 +195,16 @@
 			"Unique \"Of Panopolis\" Digital Homunculus Skin",
 			"Permanent 20% boost to Homunculus xp gain",
 			"Permanent 20% boost to in-game currency gain"
-			
+
 		],
 		"specialOffer": true
-	},
-	{
+	}, {
 		"levelName": "The Immortal level",
-		"price"    : 350.00,
+		"price": 350.00,
 		"teirImage": "images/store/founderBadge/gold.png",
-		"teirName" : "gold",
-		"teirGiftsIntro": "Of Panopolis level + A unique The Immortal forum avatar Unique In-game title: The Immortal, Unique “The Immortal Shrine”, Your name listed in the Design Council section of the game credits, Unique “The Immortal” Digital Dice Skin, Unique “The Immortal” Digital Card Sleeve and more",
-		"teirGifts":
-		[
+		"teirName": "gold",
+		"teirGiftsIntro": "Of Panopolis level + A unique The Immortal forum avatar Unique In-game title: The Immortal, Unique \"The Immortal\" Shrine, Your name listed in the Design Council section of the game credits, Unique \"The Immortal\" Digital Dice Skin, Unique \"The Immortal\" Digital Card Sleeve and more",
+		"teirGifts": [
 			"A unique Thaumaturge forum avatar",
 			"Unique In-game title: Thaumaturge",
 			"Unique \"Thaumaturge\" Shrine",
@@ -227,7 +216,7 @@
 			"Unique \"Thaumaturge\" Digital Card Sleeve",
 			"Unique \"Thaumaturge\" Digital Homunculus Skin",
 			"Four digital Start Packs",
-			
+
 			"A unique The Soothsayer forum avatar",
 			"Unique In-game title: The Soothsayer",
 			"Unique \"Soothsayer\" Shrine",
@@ -235,7 +224,7 @@
 			"Unique \"Soothsayer\" Digital Dice Skin",
 			"Unique \"Soothsayer\" Digital Card Sleeve",
 			"Unique \"Soothsayer\" Digital Homunculus Skin",
-			
+
 			"A unique The Prophet forum avatar",
 			"Unique In-game title: The Prophet",
 			"Unique \"Prophet\" Shrine",
@@ -243,7 +232,7 @@
 			"Unique \"The Prophet\" Digital Dice Skin",
 			"Unique \"The Prophet\" Digital Card Sleeve",
 			"Unique \"The Prophet\" Digital Homunculus Skin",
-			
+
 			"A unique The Abraxian forum avatar",
 			"Unique In-game title: The Abraxian",
 			"Apprentice level of the Design Council",
@@ -252,7 +241,7 @@
 			"Unique \"The Abraxian\" Digital Dice Skin",
 			"Unique \"The Abraxian\" Digital Card Sleeve",
 			"Unique \"The Abraxian\" Digital Homunculus Skin",
-			
+
 			"All Access Season 1 Pass",
 			"A unique The Of Panopolis forum avatar",
 			"Unique In-game title: Of Panopolis",
@@ -262,14 +251,14 @@
 			"Unique \"Of Panopolis\" Digital Dice Skin",
 			"Unique \"Of Panopolis\" Digital Card Sleeve",
 			"Unique \"Of Panopolis\" Digital Homunculus Skin",
-			
+
 			"Nine Digital Booster Boxes",
 			"A unique The Of Panopolis forum avatar",
 			"Unique In-game title: The Immortal",
 			"Immortal Level of the Design Council",
 			"1 Fitted, Combed Ring-spun Cotton T-Shirt &#40;your choice of the two designs&#41;,signed by the team",
 			"Unique \"Panopolis\"",
-			
+
 			"The Immortal Shrine",
 			"Your name listed in the Design Council section of the game credits",
 			"Unique \"The Immortal\" Digital Dice Skin",
@@ -277,9 +266,9 @@
 			"Unique \"The Immortal\" Digital Homunculus Skin",
 			"Permanent 25% boost to Homunculus xp gain",
 			"Permanent 25% boost to in-game currency gain"
-			
+
 		],
 		"specialOffer": true
 	}
-	
+
 ]

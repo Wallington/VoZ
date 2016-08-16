@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Visions of Zosimos</title>
 
+<link href="images/vozico.jpg" rel="icon" />
+
 
 <!-- CSS links-->
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="css/angular-material.css" rel="stylesheet">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css" />
     <link href="css/styles.css" type="text/css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
     
 </head>
 
@@ -61,9 +63,19 @@
             </div> 
             
         </div>
-		<div hide-xs><p class="md-title goldText margin-150-left">
-        	STRATEGIC MMOCCG
-        </p></div>
+        <div layout="row" layout-align="center center" class="margin-15-bottom">
+           <div flex="10"></div>
+            <div class="pull-left ">
+            	<h3 class="md-title goldText" hide-xs>STRATEGIC MMOCCG</h3>
+            </div>
+            <div flex>
+            	<!-- space between other divs -->
+            </div>
+            <div class="pull-right">
+            	<a href="http://www.indiedb.com/games/visions-of-zosimos" title="View Visions of Zosimos on Indie DB" target="_blank"><img src="http://button.indiedb.com/popularity/medium/games/21354.png" alt="Visions of Zosimos" /></a>
+            </div>
+            <div flex="10"></div>
+        </div>
         <div layout="row" layout-align="center center" layout-xs="column" id="underNav" layout-wrap >
 				
                 <md-button class="md-button md-primary" ng-repeat="subMenu in subMenuList" ng-click="GoToAch(subMenu.achLink);" ng-href="{{subMenu.href}}" >{{subMenu.name}}</md-button>
@@ -79,7 +91,7 @@
 						<a href="#"> EULA</a>
 					</div>
 					<div class="footerLink">
-						<a href="#"> Tearm of Service </a>
+						<a href="#"> Term of Service </a>
 					</div>
 					<div class="footerLink">
 						<a href="#/support"> Support </a>
@@ -91,8 +103,12 @@
 						<a href="#"> Privacy Policy </a>
 					</div>
 					<div class="footerLink">
-						<a href="#/contact"> Contacts </a>
+						<a href="#/contact"> Contact </a>
 					</div>
+                    <md-button hide-xs class="md-icon-button goldText" ng-repeat="social in socialList" ng-click="Tab(social.url)">
+                    <i class="{{social.icon}} iconSize"></i><br/>
+                    <md-tooltip>{{social.name}}</md-tooltip>
+              	</md-button>
 				</div>
 		  </footer>
     </div>
@@ -136,7 +152,8 @@
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
-   
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-cookies.js"></script>
+   <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
    <!-- Angular Material Library -->
    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>

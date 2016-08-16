@@ -1,0 +1,2 @@
+[10-Jun-2016 15:43:47 America/Denver] PHP Fatal error:  Interface 'PayPal\Handler\IPayPalHandler' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/lib/PayPal/Handler/OauthHandler.php on line 19
+[10-Jun-2016 15:43:47 America/Denver] PHP Fatal error:  Interface 'PayPal\Handler\IPayPalHandler' not found in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/lib/PayPal/Handler/RestHandler.php on line 21

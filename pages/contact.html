@@ -5,42 +5,26 @@
             
 </div>
 
-<section id="email">
-<div class="panel panel-voz-default" >
-	<div class="panel-heading">
-		<h3 class="md-headline panel-title">Email</h3>
-	</div>
-    <div class="panel-body" layout="row">
-    	<div flex>
-        	<img src="images/about/email_banner.png" class=" pull-left img-rounded">
-        </div>
-        <div>
-        	<md-button class="md-button md-raised md-primary" ng-click="OpenEmailModel()">
-                Email
-            </md-button>
-        </div>
-        
-    </div>
-</div>
-</section>
+
 <section id="partners">
 <div class="panel panel-voz-default"  >
 	<div class="panel-heading">
 		<h3 class="md-headline panel-title">Partners</h3>
 	</div>
-    <div class="panel-body" layout="row">
+    <div class="panel-body" layout="row" layout-sm="column" layout-xs="column">
          
-             <div>
-             	<md-button class="md-button md-raised md-primary" ng-click="OpenPartnerModel()">
-                    Requesting for a Partnership
-                </md-button>
-             </div>
-             <div>
-             	
-             </div>
-             <div>
-            	<img src="images/about/partners_banner.png" class=" pull-right img-rounded">
-            </div>          
+         <div flex>
+         	<md-button class="md-button md-raised md-primary" ng-click="OpenPartnerModel()">
+                Requesting for a Partnership
+            </md-button>
+         </div>
+         <div flex>
+         	<img src="../images/eBash.png" />
+           
+         </div>
+         <div flex="15">
+         	<img src="images/about/partners_banner.png" class=" pull-right img-rounded">
+         </div>              
     </div>
 </div>
 </section>
@@ -142,11 +126,20 @@
 <section id="bottomBuffer"></section>
 
 <script type="text/ng-template" id="emailModal.html">
-  <form id="emailForm" name="emailForm" novalidate ng-submit="Submit(emailForm)">
-  <div class="modal-body" id="emailOption">
-	  <div flex flex-gt-sm>
-            
-                <div ng-show="showMessage" ng-class="serverFeedback">{{serverMessage}}</div>
+  <md-dialog aria-label="Email message to Forever Interactive"  ng-cloak>
+	  <form id="emailForm" name="emailForm" novalidate ng-submit="Submit()">
+		<md-toolbar>
+		  <div class="md-toolbar-tools">
+			<h2>Email Message to Forever Interactive</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="Cancel()">
+			  <i class="fa fa-times fa-2x"></i>
+			</md-button>
+		  </div>
+		</md-toolbar>
+		<md-dialog-content>
+		  <div class="md-dialog-content" id="emailOption">
+			 <div ng-show="showMessage" ng-class="serverFeedback">{{serverMessage}}</div>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label>Your Full Name:</label>
                     <input ng-model="email.name"  ng-minlength="5" name="name"  required alt="full name input">
@@ -193,83 +186,19 @@
                         <div ng-show="feedback">Oops Logic Error, Try Again.</div>
                     </div>
                 </md-input-container>
-                
-                
-            
-        </div>
-  </div>
-  <div id="emailFooter" class="modal-footer">
-	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
+			 
+		  </div>
+		</md-dialog-content>
+		<md-dialog-actions layout="row" id="emailFooter">
+		 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
 	 		Cancel
-	 </md-button>
-	 <md-button type="submit" ng-disabled="disableSend" class="md-button md-raised md-primary" alt="contact me">
-		Send Email
-	</md-button>
-	</form>
-  </div>
+		 </md-button>
+		 <md-button type="submit" ng-disabled="disableSend" class="md-button md-raised md-primary" alt="contact me">
+			Send Email
+		</md-button>
+		</md-dialog-actions>
+	  </form>
+</md-dialog>
+
 </script>
 
-<script type="text/ng-template" id="partnerModal.html">
-  <form id="partnerForm" name="partnerForm" novalidate ng-submit="Submit(partnerForm)">
-  <div class="modal-body" id="partner">
-	  <div flex flex-gt-sm>
-            
-                <div ng-show="showMessage" ng-class="partnerServerFeedback">{{partnerServerMessage}}</div>
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Your Full Name:</label>
-                    <input ng-model="partner.name"  ng-minlength="5" name="name"  required alt="full name input">
-                    <div ng-messages="partnerForm.name.$error">
-                        <div ng-message="required">This is required.</div>
-                        <div ng-message="minlength">We need the full name. More than 5 characters long.</div>
-                    </div>
-                </md-input-container>
-                
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Your Email:</label>
-                    <input type="email" ng-model="partner.email" ng-minlength="10" maxlength="100" name="email" alt="email input" required ng-pattern="/^.+@.+\..+$/">
-                    <div ng-messages="partnerForm.email.$error" role="alert">
-                         <div ng-message-exp="['required', 'pattern', 'minlength', 'maxlength']">
-                            Your email must look like an e-mail address. Also must between 10 to 100 characters long.
-                        </div>
-                        
-                    </div>
-                </md-input-container>
-                
-         		<md-input-container class="md-block" flex-gt-sm>
-                    <label>Subject:</label>
-                    <input type="text" ng-model="partner.subject" name="subject" alt="Subject input" ng-disabled="true" >
-                    <div ng-messages="partnerForm.subject.$error" role="alert">
-                          <div ng-message="required">This is required.</div>
-                    </div>
-                </md-input-container>
-                
-                
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>Message: </label>
-                   <textarea ng-model="partner.messsage" md-maxlength="200" md-select-on-focus>
-                   </textarea>
-                </md-input-container>
-                
-                <md-input-container class="md-block" flex-gt-sm>
-                    <label>What does {{serverCodeA}} + {{serverCodeB}} add up to?</label>
-                    <input name="number" required ng-model="partner.code" required />
-                    <div ng-messages="partnerForm.code.$error" ng-show="feedback">
-                        <div ng-message="required">This is required.</div>
-                        <div ng-show="feedback">Oops Logic Error, Try Again.</div>
-                    </div>
-                </md-input-container>
-                
-                
-            
-        </div>
-  </div>
-  <div id="partnerFooter" class="modal-footer">
-	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
-	 		Cancel
-	 </md-button>
-	 <md-button type="submit" ng-disabled="disableSend" class="md-button md-raised md-primary" alt="contact me">
-		Send Request
-	</md-button>
-	</form>
-  </div>
-</script>

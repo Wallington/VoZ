@@ -19,6 +19,22 @@ body
 	font-size: 17px;
 }
 
+p{
+	font-weight:normal;	
+}
+
+strong
+{
+	font-style:oblique;
+	font-weight:900;
+		
+}
+
+.cardArt 
+{
+	width: 285px;
+}
+
 #header
 {
 	background-color: #271649;
@@ -88,6 +104,16 @@ footer
 	text-decoration:underline;	
 }
 
+.footerLink > md-button
+{
+   color: #FFBF00 !important;
+}
+
+#underNav > button > .active
+{
+	text-decoration:underline;	
+}
+
 #underNav > span[data-scrollspy-listen=code] 
 {
   background-color: #f06060;
@@ -118,6 +144,11 @@ md-content
 	
 	
 		
+}
+
+.storeItem
+{
+	height: 424px;
 }
 
 #Eldjatnor
@@ -233,6 +264,10 @@ md-list > md-list-item > a:hover
 .margin-10-right
 {
 	margin-right: 10px;	
+}
+.margin-15-bottom
+{
+	margin-bottom: 15px;	
 }
 .margin-5-left
 {

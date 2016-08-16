@@ -10,7 +10,7 @@
 
 
 
-var vozApp = angular.module('vozApp', ['ngMaterial','ui.bootstrap', 'ngAnimate', 'ngAria','ngMessages', 'ngRoute' ])
+var vozApp = angular.module('vozApp', ['ngMaterial','ui.bootstrap', 'ngAnimate', 'ngAria','ngMessages', 'ngRoute', 'toastr','ngCookies' ])
 
 //define the custome google materials theme
 
@@ -108,7 +108,7 @@ vozApp.config(function ($routeProvider)
 	})
 	.when('/founderCheckout',
 	{
-		templateUrl : 'pages/founderCheckout.php',
+		templateUrl : 'pages/founderCheckout.html',
 		controller  : 'founderCheckoutController'
 	})
 	.when('/lore',
@@ -116,10 +116,10 @@ vozApp.config(function ($routeProvider)
 		templateUrl : 'pages/lore.html',
 		controller  : 'loreController'
 	})
-	.when('/tutorials',
+	.when('/guide',
 	{
-		templateUrl : 'pages/tutorials.html',
-		controller  : 'tutorialsController'
+		templateUrl : 'pages/guide.html',
+		controller  : 'guideController'
 	});
 });
 //define the first and secondary nav functions
@@ -141,8 +141,8 @@ vozApp.service('Nav', function()
 					"achLink" : "cards"
 				},
 				{
-					"name" : "Borads",
-					"achLink" : "borads"
+					"name" : "Boards",
+					"achLink" : "boards"
 				}
 			]	
 		},
@@ -158,9 +158,9 @@ vozApp.service('Nav', function()
 					"href" : "#/about#about"
 				},
 				{
-					"name" : "Tutorials",
+					"name" : "Guide",
 					"achLink" : "",
-					"href" : "#/tutorials"
+					"href" : "#/guide"
 				},
 				{
 					"name" : "Lore",				
@@ -345,38 +345,17 @@ vozApp.service('Nav', function()
 });
 
 //define for the shop.
-vozApp.service ('Store', function($http, $window)
+vozApp.service ('Store', function($http, $window,$cookies)
 {
 	this.item = [];
 	this.itemCount = 0;
-	
-	this.payer =
-	{
-		card : '',
-		type : '',
-		email: '',
-		exMonth : null,
-		exYear	: null,
-		cvv2    : '',
-		first   : '',
-		last    : '',
-		address : 
-		{
-			line1 : '',
-			city : '',
-			country : '',
-			postalCode : '',
-			state : ''
-		},
-		state   : '',
-		validUntil : ''
-	}
 	
 	//this add items to the shoping card
 	this.AddItem = function(itemName, itemPrice, elementCodeName)
 	{ 	
 	  if(this.item.length == 0)  //check if cart has any item start off if not is true
 	  {
+		 
 		 this.item.push
 		  (
 			  {
@@ -462,7 +441,8 @@ vozApp.service ('Store', function($http, $window)
 	{
 		if(method == 'paypal')
 		{
-			$window.open('php/createPayPalPayment.php?items=' + JSON.stringify(this.item), "_blank");
+			$cookies.putObject('tempItems',this.item);
+			$window.open('php/createPayPalPayment.php?items=' + JSON.stringify(this.item), "_self");
 		}
 	}
 	
@@ -475,7 +455,7 @@ vozApp.service ('Store', function($http, $window)
 
 
 //define the mainController 
-vozApp.controller('mainController',function($scope, $mdSidenav, $window, Nav, $location, $anchorScroll)
+vozApp.controller('mainController',function($scope, $mdSidenav, $window, Nav, $location, $anchorScroll, toastr)
 {
 	$scope.ToggleRight = function()
 	{
@@ -579,6 +559,23 @@ vozApp.controller('mainController',function($scope, $mdSidenav, $window, Nav, $l
 		$mdSidenav(leftOrRight).toggle('close');	
 	}
 	
+	$scope.setToast = function(messageString, type) //simple toast display
+	{
+		messageString = angular.lowercase(messageString);
+		switch(type)
+		{
+			case 'info':
+				toastr.info(messageString, "Server:");
+				break;
+			case 'error':
+				toastr.error(messageString, 'Server Error:')
+				break;
+			case 'success':
+				toastr.success(messageString, "Server:")
+			
+		}
+	}
+	
 });
 
 /////////////////////////////////////////////
@@ -586,7 +583,7 @@ vozApp.controller('mainController',function($scope, $mdSidenav, $window, Nav, $l
 /////////////////////////////////////////////
 
 //define the about sub pages Controller
-vozApp.controller('homeController', function($scope, $http, Nav)
+vozApp.controller('homeController', function($scope, $http, Nav, $window)
 {
 	
 	$scope.rand = 0;  
@@ -658,6 +655,11 @@ vozApp.controller('homeController', function($scope, $http, Nav)
 		}
 		
 	}
+	
+	$scope.OpenTab = function (url)
+	{
+		$window.open(url, "_blank"); 
+	}
 		
 });
 
@@ -670,7 +672,8 @@ vozApp.controller('homeCarousel', function($scope) //this controlls the home sli
 			outsideSrc : "https://www.indiegogo.com/projects/visions-of-zosimos"
 		}, //slide 1
 		{
-			img : 'images/GenConBanner.jpg'
+			img : 'images/GenConBanner.jpg',
+			outsideSrc : "http://www.gencon.com/"
 		}, //slide 2
 		{
 			img : 'images/greenLightbanner.jpg',
@@ -680,9 +683,10 @@ vozApp.controller('homeCarousel', function($scope) //this controlls the home sli
 	
 });
 
-vozApp.controller('tutorialsController', function($scope, $mdMedia, $document, $interval,$timeout)
+vozApp.controller('guideController', function($scope, $mdMedia, $document, $interval,$timeout, Nav)
 {
-	
+	Nav.OpenNav('about');
+	$scope.openSubNav(); //this render the sub menu
 	$scope.serverMessageBool = true;
 	$timeout
 	(
@@ -751,8 +755,11 @@ vozApp.controller('tutorialsController', function($scope, $mdMedia, $document, $
 	
 });
 
-vozApp.controller('loreController', function($scope, $mdMedia, $document, $interval,$timeout)
+vozApp.controller('loreController', function($scope, $mdMedia, $document, $interval,$timeout, Nav)
 {
+	
+	Nav.OpenNav('about');
+	$scope.openSubNav(); //this render the sub menu
 	
 	$scope.serverMessageBool = true;
 	$timeout
@@ -837,35 +844,20 @@ vozApp.controller('downloadController', function($scope, $http,$location)
 	
 	$scope.Submit = function(htmlForm)
 	{
-		
-		if($scope.request.email.length < 10 || $scope.request.email == '' || $scope.request.email.length >= 100)
-		{
-			return false;	
-		}
-		else if($scope.request.name.length < 5 || $scope.request.name == '')
-		{
-			return false;	
-		}
-		else
-		{
-			$http
-			(
-				{
-					medthod: 'GET',
-					url: 'scripts/sendAlphaKeys.php?name=' + $scope.request.name + "&email=" + $scope.request.email	
-				}
-			).then(function successCallback(response)
+		$http
+		(
 			{
-				$scope.serverMessage = response.data[0].serverMessage;
-				$scope.serverFeedback = response.data[0].serverFeedback;
-			},
-			function errorCallback(response)
-			{
-				$scope.serverMessage = response.data[0].serverMessage;
-				$scope.serverFeedback = response.data[0].serverFeedback;
-			});
-		}
-		$scope.showMessage = true;
+				medthod: 'GET',
+				url: 'scripts/sendAlphaKeys.php?email=' + $scope.request.email + "&name=" + $scope.request.name
+			}
+		).then(function successCallback(response)
+		{
+			$scope.setToast(response.data[0].message,response.data[0].type);	
+		},
+		function errorCallback(response)
+		{
+			$scope.setToast("ERROR could not load web code ID=" + response.status,'error');
+		});
 	}
 	
 });
@@ -959,50 +951,129 @@ vozApp.controller('mediaController', function($scope, Nav, $http, $window)
 
 vozApp.controller('supportController', function($scope, Nav, $location)
 {
-	Nav.OpenNav('a');
+	Nav.subMenuList = 
+	[
+		{
+			"name" : "Server",
+			"achLink" : 'server'
+		},
+		{
+			"name" : "Patches",
+			"achLink" : "patches"
+		}
+	];
 	$scope.openSubNav();
 		
 });
 
 
-vozApp.controller('contactController', function($scope, Nav, $uibModal)
+vozApp.controller('contactController', function($scope, Nav, $mdDialog, $interval, $location, $window)
 {
-	Nav.OpenNav('contact');
-	$scope.openSubNav(); //this render the sub menu
-		
-	
-	$scope.OpenEmailModel = function()
-	{
-		$uibModal.open
-		(
-			{
-				animation: true,
-				templateUrl: 'emailModal.html',
-				 controller: 'emailController',
-				size: 'lg'
-			}
-		);	
-	}	
 	
 	$scope.OpenPartnerModel = function()
 	{
-		$uibModal.open
-		(
+		$mdDialog.show
+		(		
 			{
-				animation: true,
-				templateUrl: 'partnerModal.html',
-				 controller: 'partnerController',
-				size: 'lg'
+				templateUrl: 'emailModal.html',
+				controller: 'partnerController',
+				parent: angular.element(document.body),
+				targetEvent : event,
+				clickOutsideToClose: true
 			}
-		);	
+		).then(function (email)
+		{
+			$http
+			(
+				{
+					medthod: 'GET',
+					url: 'scripts/sendEmail.php?name=' + email.name + "&email=" + email.email + "&subject=" + email.subject + "&message=" + email.message
+				}
+			).then(function successCallback(response)
+			{
+				$scope.setToast(response.data[0].serverMessage, response.data[0].type);
+			},
+			function errorCallback(response)
+			{
+				
+				$scope.setToast(response.data[0].serverMessage, 'error');
+				
+			});
+		}, function()
+		{
+			//if this was cancel or click off the box this function active
+			$scope.setToast("Your data been discard", 'info');
+		});
 	}
+	
+	Nav.subMenuList = 
+	[
+		{
+			"name" : "Email",
+			"href" : "#/contact?emailOpen=true" 
+		},
+		{
+			"name" : "Partners",
+			"achLink" : "partners" 
+		},
+		{
+			"name" : "FAQ's",
+			"achLink" : "faq"
+		}
+	];
+	$scope.openSubNav(); //this render the sub menu
+	
+	
+		if($location.search().emailOpen)
+		{
+			$mdDialog.show
+			(		
+				{
+					templateUrl: 'emailModal.html',
+					controller: 'emailController',
+					parent: angular.element(document.body),
+					targetEvent : event,
+					clickOutsideToClose: true
+				}
+			).then(function (email)
+			{
+				$http
+				(
+					{
+						medthod: 'GET',
+						url: 'scripts/sendEmail.php?name=' + email.name + "&email=" + email.email + "&subject=" + email.subject + "&message=" + email.message
+					}
+				).then(function successCallback(response)
+				{
+					$scope.setToast(response.data[0].serverMessage, response.data[0].type);
+					
+					
+				},
+				function errorCallback(response)
+				{
+					
+					$scope.setToast(response.data[0].serverMessage, 'error');
+					
+				});
+				$window.location.href ="#/contact";
+			}, function()
+			{
+				//if this was cancel or click off the box this function active
+				$scope.setToast("Your data been discard", 'info');
+				$window.location.href ="#/contact";
+			});
+				
+		}
+		
+		
+	
 	
 });
 
 
 
 //define the founder page Controller
-vozApp.controller('founderController', function($scope, $http, $uibModal, Store ,$interval,Nav, $location)
+vozApp.controller('founderController', function($scope, $http, $uibModal, Store ,$interval,Nav, $location, $window)
 {	
 	Nav.OpenNav('founder');  //define what page were on
 	$scope.openSubNav(); // update the main controller 
@@ -1024,6 +1095,7 @@ vozApp.controller('founderController', function($scope, $http, $uibModal, Store 
 	);
 	$scope.AddToCart = function(name, price, elementCodeName)
 	{
+		$scope.setToast("Item been add to cart.",'info');
 		Store.AddItem(name,price,elementCodeName);
 		$scope.itemCounter = Store.item.length;	
 	}
@@ -1096,12 +1168,32 @@ vozApp.controller('founderController', function($scope, $http, $uibModal, Store 
 			}
 		);
 	}
+	
+	if($location.search().paypalSuccess != null && $location.search().paymentId != null && $location.search().PayerID != null)
+	{
+		$window.location.href = "#/founderCheckout?paypalSuccess=" + $location.search().paypalSuccess + "&paymentId=" + $location.search().paymentId + "&PayerID=" + $location.search().PayerID
+	}
+	
+	
+	$scope.payment = $location.search().payment
+	
+	if($scope.payment == 'success')
+	{
+		$scope.setToast("Thank you, Purchaing Your Founder Pack!",'success');
+	}
+	else if($scope.payment == 'canceled')
+	{
+		$scope.setToast("Proccess was canceled",'info');
+	}
+	else if($scope.payment == 'error')
+	{
+		$scope.setToast("Payment did not go though. Please try again.",'error');
+	}
+		
+	
+	
 });
 
-vozApp.controller('founderCheckoutController', function($scope, $http, $uibModal, Store ,$interval,Nav, $location)
-{
-		
-});
 
 vozApp.controller('teirModalController', function ($scope, $uibModalInstance, teir, Store) //if they were look at more details on that teir
 {
@@ -1198,7 +1290,7 @@ vozApp.controller('paymentOptionModalController', function ($scope, $uibModalIns
 	 
 	 $scope.disableSend = true;
 	 
-	 $scope.openCard = function()
+	 /*$scope.openCard = function()
 	 {
 		$uibModalInstance.dismiss('close');
 			
@@ -1217,16 +1309,16 @@ vozApp.controller('paymentOptionModalController', function ($scope, $uibModalIns
 		);
 			
 		
-	 }
+	 }*/
 	 
 });
 
-vozApp.controller('emailController', function ($scope, $uibModalInstance, $http, $timeout) //selecting payment
+vozApp.controller('emailController', function ($scope, $mdDialog) //selecting payment
 {
 	 //cencel also form of close the 
 	 $scope.Cancel = function () 
 	 {
-		$uibModalInstance.dismiss('cancel');
+		$mdDialog.cancel();
 	 };
 	
 	$scope.code = 
@@ -1271,28 +1363,7 @@ vozApp.controller('emailController', function ($scope, $uibModalInstance, $http,
 		//checking if the code system is right if not we give new set of number 
 		if($scope.email.code == ($scope.answerCodeA + $scope.answerCodeB))
 		{
-			$http
-			(
-				{
-					medthod: 'GET',
-					url: 'scripts/sendEmail.php?name=' + $scope.email.name + "&email=" + $scope.email.email + "&subject=" + $scope.email.subject + "&message=" + $scope.email.message
-				}
-			).then(function successCallback(response)
-			{
-				$scope.serverMessage = response.data[0].serverMessage;
-				$scope.serverFeedback = response.data[0].serverFeedback;
-				$timeout(function()
-				{
-					$uibModalInstance.dismiss('close');
-				}, 2000);
-				
-			},
-			function errorCallback(response)
-			{
-				
-				$scope.serverMessage = response.data[0].serverMessage;
-				$scope.serverFeedback = response.data[0].serverFeedback;
-			});
+			$mdDialog.hide($scope.email); 
 		}
 		else
 		{
@@ -1303,4 +1374,161 @@ vozApp.controller('emailController', function ($scope, $uibModalInstance, $http,
 	}
 	
 	 
+});
+vozApp.controller('partnerController', function ($scope, $mdDialog) //selecting payment
+{
+	 //cencel also form of close the 
+	 $scope.Cancel = function () 
+	 {
+		$mdDialog.cancel();
+	 };
+	
+	$scope.code = 
+	[
+		"One",
+		"Two",
+		"Three",
+		"Four",
+		"Five",
+		"Six",
+		"Seven",
+		"Eight",
+		"Nine",
+		"Ten"
+	];
+	
+	$scope.disableSend = false;
+	
+	$scope.answerCodeA = (Math.floor(Math.random() * 10) + 1);
+	$scope.answerCodeB = (Math.floor(Math.random() * 10) + 1);
+	
+	$scope.serverCodeA = $scope.code[ $scope.answerCodeA - 1];
+	$scope.serverCodeB = $scope.code[ $scope.answerCodeB - 1];
+	
+	$scope.email =
+	{
+		email : '',
+		name: '',
+		subject : 'Partnership',
+		message : '',
+		code: ''
+	};
+	
+	$scope.serverFeedback = ""; //were define default css so when $http done it will either add alert-success or alert-danger
+	$scope.serverMessage = ''; // were get error message back from server was successful or fail send data
+	
+	$scope.Submit = function(htmlForm)
+	{
+		$scope.serverMessage = "Creating Email...";
+		$scope.serverFeedback = "alert alert-info";
+		$scope.showMessage = true;
+		//checking if the code system is right if not we give new set of number 
+		if($scope.email.code == ($scope.answerCodeA + $scope.answerCodeB))
+		{
+			$mdDialog.hide($scope.email); 
+		}
+		else
+		{
+			$scope.serverFeedback = "alert alert-danger";
+			$scope.serverMessage = "Opps not right answer";	
+			
+		}
+	}
+	
+	 
+});
+
+vozApp.controller('founderCheckoutController', function($scope, $cookies, $http, $location, $window)
+{
+	$scope.itemLists = $cookies.getObject('tempItems');
+	//console.log($scope.itemLists);
+	$scope.emailFilledIn = false;
+	
+	for(var mI = 0; mI < $scope.itemLists.length; mI++)
+	{
+		if($scope.itemLists[mI].copy > 1)
+		{
+			for(var itemIndex = 0; itemIndex < ($scope.itemLists[mI].copy - 1); itemIndex++)
+			{
+				$scope.itemLists.push({"copy": 1, "img": $scope.itemLists[mI].img, "name": $scope.itemLists[mI].name, "price" : $scope.itemLists[mI].price});
+				$scope.itemLists[mI].copy--; 
+			}
+		}
+	}
+	
+	$scope.OnChange = function()
+	{
+		for(var mI = 0; mI < $scope.itemLists.length; mI++)
+		{
+			if($scope.itemLists[mI].email != null || $scope.itemLists[mI].email != '')
+			{
+				$scope.emailFilledIn = true;
+			}
+			else
+			{
+				break;	
+			}
+		}	
+	}
+	
+	$scope.ExecutePayment = function()
+	{
+		
+		if($location.search().paypalSuccess && $scope.emailFilledIn)
+		{
+			$http
+			(
+				{
+					medthod: 'GET',
+					url: 'php/executePayment.php?paymentId=' + $location.search().paymentId + "&PayerID=" + $location.search().PayerID
+				}
+			).then(function successCallback(response)
+			{
+				if(response.data != 400)
+				{
+					for(var i = 0; i < $scope.itemLists.length; i++)
+					{
+						$http
+						(
+							{
+								medthod: 'GET',
+								url: 'scripts/insertReserveItem.php?packName=' + $scope.itemLists[i].name + '&emailTo=' + $scope.itemLists[i].email
+							}
+						).then(function successCallback(response)
+						{
+							
+						},
+						function errorCallback(response)
+						{
+							
+							$scope.setToast(response.stats, 'error');
+							
+						});	
+					}
+					$window.location.href = "#/founder?payment=success";
+				}
+				else
+				{
+					$window.location.href = "#/founder?payment=failed";
+				}
+				
+				
+			},
+			function errorCallback(response)
+			{
+				
+				$scope.setToast(response.satus, 'error');
+				
+			});
+		}
+		else
+		{
+			$scope.setToast("Please enter all email to which will be send code to", 'error');	
+		}
+	}
+	
+	$scope.CancelPayment = function()
+	{
+		$window.location.href = "#/founder?payment=canceled";	
+	}
 });

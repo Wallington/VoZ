@@ -12,11 +12,11 @@
             
             <md-card-content>
                
-               <md-button class="md-button" ng-click="ToggleCart()" ng-disabled="true">
+               <md-button class="md-button" ng-click="ToggleCart()" >
                     <i class="fa fa-shopping-basket fa-2x"></i>
                     {{itemCounter}} items
                </md-button>
-               <md-button class="md-button " ng-click="CheckOut()" ng-disabled="true">
+               <md-button class="md-button " ng-disabled="checker" ng-click="CheckOut()" >
                     <i class="fa fa-shopping-bag fa-2x"></i>
                     Check Out
                </md-button> 
@@ -27,7 +27,7 @@
 
 <div layout="row" layout-xs="column"  layout-wrap id="store:main" >
 	<div flex="33" flex-xs="100" ng-repeat="teir in tiers">
-    	<md-card class="storeCards">
+    	<md-card class="storeCards storeItem">
         	<md-card-content>
             	<div layout="column" layout-align="center center">
                     <p>${{teir.price}} USD for</p>
@@ -38,7 +38,7 @@
                         <md-button aria-label="More Detail" ng-click="ToggleDetail($index)">
                             More Detail
                         </md-button>
-                        <md-button class="md-button" ng-disabled="true" aria-label="Add to Shopping Cart" ng-click="AddToCart(teir.levelName,teir.price, teir.teirName )">
+                        <md-button class="md-button"  aria-label="Add to Shopping Cart" ng-click="AddToCart(teir.levelName,teir.price, teir.teirName )">
                             Add To Cart
                         </md-button>
                     </div>
@@ -209,7 +209,7 @@
 	  </div>
   </div>
   <div id="teirFooter" class="modal-footer">
-  	 <md-button ng-click="AddToCart(selectedTeir.levelName,selectedTeir.price, selectedTeir.teirName )" ng-disabled="true" class="md-button md-raised md-primary">
+  	 <md-button ng-click="AddToCart(selectedTeir.levelName,selectedTeir.price, selectedTeir.teirName )" ng-disabled="false" class="md-button md-raised md-primary">
 	 		Add To Cart
 	 </md-button>
 	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
@@ -244,7 +244,7 @@
   <div id="cartFooter" class="modal-footer">
   	 <h4>{{numItem}} Items</h4>
   	 <h4>${{total}}.00 total</h4>
-  	 <md-button ng-click="CheckOut()" ng-disabled="true" class="md-button md-raised md-primary">
+  	 <md-button ng-click="CheckOut()" ng-disabled="checker" class="md-button md-raised md-primary">
 	 		Check Out
 	 </md-button>
 	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">
@@ -264,7 +264,7 @@
 	  	  <div class="panel-heading disabled">
 		  	Credit Card
 		  </div>
-	  </div></a>
+	  </div></a
   </div>
   <div id="paymentOptionFooter" class="modal-footer">
 	 <md-button ng-click="Cancel()" class="md-button md-raised md-primary">

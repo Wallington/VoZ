@@ -31,15 +31,15 @@
 	
 	if(!$error)
 	{
-		$feedback = 'alert alert-success';
+		$feedback = 'success';
 		$eMessage = "Your message has been sent. Please wait for 1 to 2 business days before try again.";
 		mail('contact@foreverinteractive.com',$subject, $emailMessage);	
 	}
 	else
 	{
-		$feedback = 'alert alert-danger';
+		$feedback = 'error';
 		
 		
 	}
-	echo '[{"' . 'serverMessage' . '": "' . $eMessage . '","serverFeedback":"'. $feedback . '"}]';	
+	echo '[{"' . 'serverMessage' . '": "' . $eMessage . '","type":"'. $feedback . '"}]';	
 ?>

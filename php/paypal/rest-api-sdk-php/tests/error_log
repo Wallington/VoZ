@@ -1,0 +1,1 @@
+[10-Jun-2016 15:43:06 America/Denver] PHP Fatal error:  require(): Failed opening required '/home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/vendor/autoload.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/tests/bootstrap.php on line 10

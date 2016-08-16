@@ -26,12 +26,12 @@
 	(
 		new PayPal\Auth\OAuthTokenCredential
 		(
-			'Affx3loVsR2jp8I6ydiao3QhQTnv0KFdtQAYHWss0D3YbeI6WJpo21mwn_RlXBJPDLvnrHSNG9CzMjzr', //ClientID
-			'EFGAkh4HSqn8ntud7eBC4P44hR5my_yUfGIBP_A54QrQHMnlFCg2Gnk5BuqYrm0i2VFuLsSUKvCejpFB' //ClientSecret
+			'ASxxd51BupAE2Tlj11FCwhIW0BHSYcGTTH_GD6TXPpSAvTcxBnhuEBlH_FwowJw6k3JdUpUqJsVZB1IP', //ClientID
+			'EA4KP-N1ILdYMMqxjNmTQHQGxtDiHsOJwqScUdvPEWC5muyxBCv-Xsg4MfD3ezJ8VyZSudktXFyOP1TK' //ClientSecret
 		)
 	);
 	
-	$apiContext->setConfig(array("mode" => "sandbox"));
+	$apiContext->setConfig(array("mode" => "live"));
 	
 	$payer = new PayPal\Api\Payer();
 	

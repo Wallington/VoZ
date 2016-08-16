@@ -1,0 +1,3 @@
+[10-Jun-2016 15:43:07 America/Denver] PHP Fatal error:  Call to undefined method PayPal\Api\BankAccount::create() in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/sample/vault/CreateBankAccount.php on line 73
+[10-Jun-2016 15:43:22 America/Denver] PHP Fatal error:  Call to undefined method PayPal\Api\BankAccount::create() in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/sample/vault/CreateBankAccount.php on line 73
+[10-Jun-2016 15:43:22 America/Denver] PHP Fatal error:  Call to undefined method PayPal\Api\BankAccount::create() in /home4/foreveri/public_html/visionsofzosimos/php/paypal/rest-api-sdk-php/sample/vault/CreateBankAccount.php on line 73
